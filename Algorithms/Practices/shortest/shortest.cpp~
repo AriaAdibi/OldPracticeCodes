@@ -1,0 +1,75 @@
+#include<iostream>
+using namespace std;
+const int H=1000,inf=1e9;
+int c[H][H],dis[H][H],n,m,glob,mark[H];
+
+void rest(int x){
+	mark[x]=1;
+	int temp;
+	for(int i=1;i<=n;i++){
+		if(mark[i]==1 || a[x][i]==0){
+			continue;
+		}
+		temp=dis[glob][x]+a[x][i];
+		if(dis[glob][i]>temp){
+			dis[glob][i]=temp;
+		}
+	}
+}
+
+void dijkstra(int x){	
+	memset(mark,0,sizeof mark);
+	glob=x;
+	dis[glob][x]=1;
+	rest(glob);
+	for(int i=0;i<n;i++){
+		int check=-1,mini=inf;
+		for(int j=1;j<=n;j++){
+			if(mark[j]==1){
+				continue;
+			}
+			if(mini>dis[glob][j]){
+				mini=dis[glob][j];
+				check=j;
+			}
+		}
+		if(check==-1){
+			return;
+		}
+		rest(check);
+	}
+}
+int main(){
+	int x,y,z;
+	cin>>n>>m;
+	for(int i=0;i<n;i++){
+		for(int j=1;j<=n;j++){	
+			c[x][y]=inf;
+			dis[x][y]=inf;
+		}
+	}
+	for(int i=0;i<m;i++){
+		cin>>x>>y>>z;
+		a[x][y]=min(a[x][y],z);
+		c[x][y]=a[x][y];
+	}
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=n;j++){
+			for(int k=1;k<=n;k++){
+				c[j][k]=min(c[j][k],c[j][i]+c[i][k]);
+			}
+		}
+	}
+	for(int i=1;i<=n;i++){
+		dijkstra(i);
+	}
+	for(int i=1;i<=n;i++){
+		for(int j=1;j<=n;j++){
+			if(dis[i][j]!=c[i][j]){
+				cout<<"WRONG"<<endl;
+			}
+		}
+	}
+	cout<<"accepted"<<endl;
+	return 0;
+}

@@ -1,0 +1,72 @@
+#include<iostream>
+using namespace std;
+const int H=510;
+int a[H][H],n,m,p,mod[H],paye[H],counter;
+void myswap(int x,int y){
+	for(int j=0;j<=m;j++){
+		swap(a[x][j],a[y][j]);
+	}
+}
+int main(){
+	scanf("%d%d%d",&n,&m,&p);
+	for(int i=1;i<p;i++){
+		for(int j=1;j<p;j++){	
+			if((i*j)%p==1){
+				mod[i]=j;
+				break;
+			}
+		}
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<=m;j++){
+			scanf("%d",&a[i][j]);
+		}
+	}
+	int row=0,col=0;
+	for(;col<m;col++;
+		for(int i=row;i<n;i++){
+			if(a[i][col]!=0){
+				myswap(i,row);
+				int x=mod[a[row][col]];
+				for(int j=0;j<=m;j++){
+					a[i][j]*=x;
+					a[i][j]%=p;
+				}
+				for(int j=0;j<n;j++){
+					if(j==row){
+						continue;
+					}
+					int y=a[j][col];
+					for(int k=0;k<=m;k++){
+						a[j][k]-=y*a[row][k];
+						a[j][k]+=p*1000;
+						a[j][k]%=p;
+					}
+				}
+				row++;
+				paye[counter++]=col;
+				break;
+			}
+		}
+	}
+	for(int i=row+1;i<n;i++){
+		if(a[i][m]!=0){
+			cout<<"bad"<<endl;
+			for(int i=0;i<counter;i++){
+				cout<<paye[i]+1<<" ";
+			}
+			cout<<endl;
+			return 0;
+		}
+	}
+	cout<<"good"<<endl;
+	for(int i=0;i<m;i++){
+		cout<<a[i][m]<<" ";
+	}
+	cout<<endl;
+	for(int i=0;i<counter;i++){
+		cout<<paye[i]+1<<" ";
+	}
+	cout<<endl;	
+	return 0;
+}

@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+const int H=1000000;
+int a[H],b[H],c[H],counter=1,h[H],n;
+
+void bubbledown(int x){
+	int mc=x;
+	if(2*x<counter && h[mc]>h[2*x]){
+		mc=2*x;
+	}
+	if(2*x+1<counter && h[mc]>h[2*x+1]){
+		mc=2*x+1;
+	}
+	if(mc==x){
+		return;
+	}
+	swap(h[x],h[mc]);
+	bubbledown(mc);
+}
+
+
+void bubbleup(int x){
+	if(h[x]<h[x/2]){
+		swap(h[x],h[x/2]);
+		bubbleup(x/2);
+		return;
+	}
+	bubbledown(x);
+}
+int extmin(){
+	int ret=h[1];
+	counter--;
+	h[1]=h[counter];
+	bubbledown(1);
+	return ret;
+}
+void insert(int x){
+	h[counter++]=x;
+	bubbleup(counter-1);
+}
+int main(){
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		scanf("%d",&b[i]);
+		insert(b[i]);
+	}
+	sort(b,b+n);
+	for(int i=0;i<n;i++){
+		c[i]=extmin();
+	}
+	for(int i=0;i<n;i++){
+		if(c[i]!=b[i]){
+			cout<<"WRONG"<<endl;
+			return 0;
+		}
+	}
+	cout<<"accepted"<<endl;
+}

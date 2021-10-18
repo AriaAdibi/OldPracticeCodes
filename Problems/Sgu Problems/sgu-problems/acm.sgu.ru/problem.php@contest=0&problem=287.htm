@@ -1,0 +1,89 @@
+<HTML>
+<!-- saved from url=(0051)http://acm.sgu.ru/problem.php?contest=0&problem=287 -->
+                               <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Saratov State University :: Online Contester</title>
+<META content="text/html; charset=windows-1251" http-equiv=Content-Type>
+<META NAME="keywords" CONTENT="???">
+<META NAME="description" CONTENT="???">
+<link rel="stylesheet" href="style-1024.css" type="text/css">
+</head>      <body bgcolor=#F3F6F9 style = 'font-size : 9pt;' text=#000000 link=#336699 vlink=#336699 alink=#336699><div align="center">
+    <div align=center><h4>287. Amusing Qc Machine
+</h4></div><div align=center>time limit per test: 1
+ sec.<br>memory limit per test: 65536
+ KB</div><div align=center>input: standard<br>output: standard</div><br><br><br><div align = left>Qc was asked to write a program to simulate a game "Guess a number". The program selects some integer number from 1 to q, and asks the player to find it.
+<br>The program interacts with the player in the following way. The player inputs some integer number, and the program tells whether the player's number is equal, less than, or greater than the selected number. For example, for q = 8 the dialog could look in the following way:
+<br>
+<br>-   Player: 4
+<br>-   Program: Greater than 4
+<br>-   Player: 6
+<br>-   Program: Less than 6
+<br>-   Player: 3
+<br>-   Program: Greater than 3
+<br>-   Player: 5
+<br>-   Program: Correct! It's 5. You have found it in 4 turns.
+<br>
+<br>Using this simple game, people may, for example, study the method of binary search --- the optimal strategy to win with a minimal number of questions.
+<br>The program was expected to work this way, but... Qc would not be himself if he did not bring us his new joke! Qc has intentionally inserted some bugs into his program, so that it worked a bit different compared to the way described above. The Qc Machine (as Qc has proudly called it) selects the number from 1 to q and asks the player to find it, but in the dialog the program does not answer the questions as expected. Instead the Qc machine answers the question that was asked c questions ago. So, after entering the i-th number, the player receives the information whether his (i-c)-th number was correct, less than, or greater than needed. 
+<br>For example, the algorithm, programmed in the Qc machine could have the following dialog with the player for q=21 and c=2:
+<br>
+<br>-   Player: 5
+<br>-   Qc machine outputs nothing
+<br>-   Player: 9
+<br>-   Qc machine outputs nothing
+<br>-   Player: 3
+<br>-   Qc machine: Greater than 5
+<br>-   Player: 7
+<br>-   Qc machine: Less than 9
+<br>-   Player: 6
+<br>-   Qc machine: Greater than 3
+<br>-   Player: 1
+<br>-   Qc machine: Correct! It's 7. You have found it in 6 turns.
+<br>
+<br>
+<br>There were many attempts to find the optimal strategy in game with Qc's rules, but none of them was successful. Only Qc knows the optimal strategy, so your task for this contest is to find it, and for given q and c output the minimal number of steps required in the worst case to find the number selected by the Qc machine.
+</div><div align = left><br><b>Input</b></div><div align = left>Input contains two integer numbers: q and c (1 &lt;= q &lt;= 10^15, 0 &lt;= c &lt;= 10^6).
+<br>
+</div><div align = left><br><b>Output</b></div><div align = left>Output a single integer n --- the number of questions required to find the selected integer number from 1 to q on the Qc machine with a delay parameter c in the worst case.
+<br>
+</div><div align = left><br><b>Sample test(s)</b></div><div align = left><br>Input</div><div align = left><font face='Courier New'></div><div align = left><pre></div><div align = left>Test #1
+<br>21 2
+<br>
+<br>Test #2
+<br>1 1
+<br>
+<br>Test #3
+<br>65535 0
+<br>
+<br>Test #4
+<br>65536 0
+<br>
+<br>Test #5
+<br>111 1
+<br>
+<br>Test #6
+<br>21 20
+<br>
+</div><div align = left></pre></div><div align = left></font></div><div align = left><br>Output</div><div align = left><font face='Courier New'></div><div align = left><pre></div><div align = left>Test #1
+<br>10
+<br>
+<br>Test #2
+<br>2
+<br>
+<br>Test #3
+<br>16
+<br>
+<br>Test #4
+<br>17
+<br>
+<br>Test #5
+<br>11
+<br>
+<br>Test #6
+<br>41
+<br>
+</div><div align = left></pre></div><div align = left></font></div><div align = left><div align = right> <a href = 'submit.php@problem=287'>[submit]</a> </div></div><div align = left><div align = right> <a href = 'forum.php@contest=0&problem=287'>[forum]</a> </div></div><div align = left><hr></div><table align=left cellspacing=7><tr><td>Author:</td><td>Anton Golubev, Petrazavodsk SU
+</td></tr><tr><td>Resource:</td><td>Anton Golubev (Hedgehog)'s Contest #2 from Annual Summer Russian Teams Meeting in Petrozavodsk State University
+</td></tr><tr><td>Date:</td><td>August 26, 2005
+</td></tr></table><br><br><br><br><br><br><br><br><br><br><br><table width=100% class=tb cellpadding=0 cellspacing=0><tr><td><table width=100% cellspacing=1 ><tr><td bgcolor=#FFFFFF> <table width=100% cellpadding=0 cellspacing=0 border=0><tr style='background-color : #FFFFFF;'><td align=left>Server time: 2008-09-03 15:41:32</td><td align=right><a target=_top href='mailto:acm@sgu.ru'>Online Contester</a> Team &copy; 2002 - 2008. All rights reserved.</td></tr></table></td></tr></table></td></tr></table></div></body></html> 

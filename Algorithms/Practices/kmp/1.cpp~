@@ -1,0 +1,59 @@
+#include<iostream>
+using namespace std;
+const int H=2*1000*1000+10;
+char s[H],t[H];
+int out[H],a[H],n,m,tedad;
+void primary(){
+	a[0]=0;
+	int maxmatch=0;
+	for(int i=1;i<m;i++){
+		while(t[maxmatch]!=t[i]){
+			maxmatch=a[maxmatch-1];
+			if(maxmatch==0){
+				break;
+			}
+		}
+		if(t[maxmatch]==t[i]){
+			maxmatch++;
+		}
+		a[i]=maxmatch;
+//		cerr<<i<<"::::::  "<<a[i]<<endl;
+	}
+}
+
+int main(){
+	scanf("%d%d",&n,&m);
+	for(int i=0;i<n;i++){
+		scanf(" %c",&s[i]);
+	}
+	for(int i=0;i<m;i++){
+		scanf(" %c",&t[i]);
+	}
+	s[n++]='?';
+	primary();
+	int maxmatch=0;
+	if(s[0]==t[0]){
+	//	maxmatch++;
+	}
+	for(int i=1;i<n;i++){
+		if(maxmatch==m){
+			out[tedad++]=i-m+1;
+			maxmatch=a[m-1];
+		}
+		while(t[maxmatch]!=s[i]){
+			maxmatch=a[maxmatch-1];
+			if(maxmatch==0){
+				break;
+			}
+		}
+		if(t[maxmatch]==s[i]){
+			maxmatch++;
+		}
+	}
+	printf("%d\n",tedad);
+	for(int i=0;i<tedad;i++){
+		printf("%d ",out[i]);
+	}
+	printf("\n");
+	return 0;
+}

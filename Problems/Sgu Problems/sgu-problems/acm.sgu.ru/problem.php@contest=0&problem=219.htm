@@ -1,0 +1,51 @@
+<HTML>
+<!-- saved from url=(0051)http://acm.sgu.ru/problem.php?contest=0&problem=219 -->
+                               <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Saratov State University :: Online Contester</title>
+<META content="text/html; charset=windows-1251" http-equiv=Content-Type>
+<META NAME="keywords" CONTENT="???">
+<META NAME="description" CONTENT="???">
+<link rel="stylesheet" href="style-1024.css" type="text/css">
+</head>      <body bgcolor=#F3F6F9 style = 'font-size : 9pt;' text=#000000 link=#336699 vlink=#336699 alink=#336699><div align="center">
+    <div align=center><h4>219. Synchrograph
+</h4></div><div align=center>time limit per test: 4
+ sec.<br>memory limit per test: 65536
+ KB</div><div align=center>input: standard<br>output: standard</div><br><br><br><div align = left>In the theory of processes a special case of Petri nets is often considered, called synchrographs. Synchrograph can be represented as directed graph, each arc of which is marked with some non-negative integer number. The vertex of synchrograph is called active if all arcs incoming into this vertex are marked with the positive number.
+<br>
+<br>Synchrograph operates in cycles. Each cycle one active vertex is nondeterministically selected and fired. The vertex fires the following way: the number on each arc incoming into this vertex is decreased by one, and the number on each arc outgoing from this vertex is increased by one. After that the set of active vertices is refreshed due to the new marks of the arcs and the next cycle takes place.
+<br>
+<br>The vertex of synchrograph is called <em>potentially alive</em> if there is the sequence of fires, such that after it the vertex itself fires. The vertex is called <em>alive</em> if after any valid sequence of fires it is potentially alive.
+<br>
+<br>For each vertex of synchrograph detect whether it is alive.
+<br>
+</div><div align = left><br><b>Input</b></div><div align = left>
+<br>The first line of the input file contains N and M &mdash; the number of vertices and arcs of synchrograph respectively (1 &le; N &le; 1000, 1 &le; M &le; 50000).  Next M lines contain arc descriptions --- the beginning of the arc, the end of the arc and the number that this arc is initially marked with. No mark exceeds 10<sup>9</sup>.
+<br>
+</div><div align = left><br><b>Output</b></div><div align = left>
+<br>For each vertex print 1 if it is alive and 0 in the other case.
+<br>
+</div><div align = left><br><b>Sample test(s)</b></div><div align = left><br>Input</div><div align = left><font face='Courier New'></div><div align = left><pre></div><div align = left>6 8
+<br>1 2 1
+<br>4 3 0
+<br>2 4 0
+<br>4 3 1
+<br>1 6 0
+<br>6 3 1
+<br>3 2 0
+<br>4 5 1000000000
+<br>
+</div><div align = left></pre></div><div align = left></font></div><div align = left><br>Output</div><div align = left><font face='Courier New'></div><div align = left><pre></div><div align = left>1
+<br>0
+<br>0
+<br>0
+<br>0
+<br>1
+<br>
+</div><div align = left></pre></div><div align = left></font></div><div align = left><br><b>Note</b></div><div align = left>11.12.2003. Clarification done: "For each vertex of synchrograph detect whether it is potentially alive" changed to "For each vertex of synchrograph detect whether it is alive".
+<br>
+</div><div align = left><div align = right> <a href = 'submit.php@problem=219'>[submit]</a> </div></div><div align = left><div align = right> <a href = 'forum.php@contest=0&problem=219'>[forum]</a> </div></div><div align = left><hr></div><table align=left cellspacing=7><tr><td>Author:</td><td>Andrew Stankevich
+</td></tr><tr><td>Resource:</td><td>Summer Trainings 2003, Maloyaroslavets
+</td></tr><tr><td>Date:</td><td>2003-06-26
+</td></tr></table><br><br><br><br><br><br><br><br><br><br><br><table width=100% class=tb cellpadding=0 cellspacing=0><tr><td><table width=100% cellspacing=1 ><tr><td bgcolor=#FFFFFF> <table width=100% cellpadding=0 cellspacing=0 border=0><tr style='background-color : #FFFFFF;'><td align=left>Server time: 2008-09-03 15:40:57</td><td align=right><a target=_top href='mailto:acm@sgu.ru'>Online Contester</a> Team &copy; 2002 - 2008. All rights reserved.</td></tr></table></td></tr></table></td></tr></table></div></body></html> 

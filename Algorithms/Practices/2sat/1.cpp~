@@ -1,0 +1,76 @@
+// YA HAGH
+
+#include<iostream>
+#include<vector>
+using namespace std;
+const int H=5010*2;
+int n,m,nn,saf[H],counter,mark[H];
+vector <int>a[H];
+void rest(int x){
+	for(int i=0;i<counter;i++){
+		mark[saf[i]]=x;
+	}
+}
+
+int dfs(int x){
+	mark[x]=2;
+	saf[counter++]=x;
+	int temp;
+	for(int i=0;i<(int)a[x].size();i++){	
+		temp=a[x][i];
+		if(mark[temp]!=0){
+			continue;
+		}
+		if(mark[nn-temp]==2){
+			return 0;
+		}else{
+			if(dfs(temp)==0){
+				return 0;
+			}
+		}
+	}
+	return 1;
+}
+
+int main(){
+	scanf("%d%d",&n,&m);
+	nn=2*n+1;
+	int x,y;
+	for(int i=0;i<m;i++){
+		scanf("%d%d",&x,&y);
+		if(x<0){
+			x=nn+x;
+		}
+		if(y<0){
+			y=nn+y;
+		}
+		a[nn-x].push_back(y);
+		a[nn-y].push_back(x);
+	}
+	for(int i=1;i<=n;i++){
+		if(mark[i]==0 && mark[nn-i]==0){
+			if(dfs(i)==1){
+				rest(1);
+				continue;
+			}else{
+				rest(0);
+			}
+			counter=0;
+			if(dfs(nn-i)==1){
+				rest(1);
+				continue;
+			}else{
+				rest(0);
+			}
+		}else{
+			continue;
+		}
+		printf("NO\n");
+		return 0;		
+	}
+	printf("YES\n");
+	for(int i=1;i<=n;i++){
+		printf("%d\n",mark[i]);
+	}
+	return 0;
+}

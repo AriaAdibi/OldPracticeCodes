@@ -1,0 +1,61 @@
+// YA HAGH
+#include<iostream>
+#include<vector>
+using namespace std;
+const int H=50*1000;
+int n,m,k,good[H],mark[H],d[H],c[H],par[H];
+vector<int>a[H][2];
+
+void dfs(int x){
+	mark[x]=1;
+	int temp,check=-1,maxi=-10000000;
+	for(int i=0;i<(int)a[x][0].size();i++){
+		temp=a[x][0][i];
+		if(mark[temp]==1){
+			continue;
+		}
+		par[temp]=x;
+		dfs(temp);
+		if(good[temp]==1){
+			good[x]=1;
+			d[x]+=d[temp]+a[x][1][i]+a[x][1][i];
+			if(maxi<-c[temp]+d[temp]+a[x][1][i]){
+				check=i;
+				maxi=-c[temp]+d[temp]+a[x][1][i];
+			}
+		}
+	}	
+	for(int i=0;i<(int)a[x][0].size();i++){
+		temp=a[x][0][i];
+		if(good[temp]==0){
+			continue;
+		}
+		if(check==i || par[x]==a[x][0][i]){
+			continue;
+		}
+		c[x]+=d[temp]+a[x][1][i]+a[x][1][i];
+	}
+	if(check!=-1){
+		c[x]+=c[a[x][0][check]]+a[x][1][check];
+	}
+}
+
+int main(){
+	scanf("%d%d",&n,&k);
+	int x,y,z;
+	for(int i=1;i<n;i++){
+		scanf("%d%d%d",&x,&y,&z);
+		a[x][0].push_back(y);
+		a[y][0].push_back(x);
+		a[x][1].push_back(z);
+		a[y][1].push_back(z);
+	}
+	scanf("%d",&m);
+	for(int i=0;i<m;i++){
+		scanf("%d",&x);
+		good[x]=1;
+	}
+	dfs(k);
+	cout<<c[k]<<endl;
+	return 0;
+}

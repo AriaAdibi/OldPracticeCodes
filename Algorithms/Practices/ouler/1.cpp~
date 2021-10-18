@@ -1,0 +1,51 @@
+// YA HAGH
+
+#include<iostream>
+#include<vector>
+using namespace std;
+const int H=1000;
+vector<int> a[H],stack;
+int n,m,p[H],b[H][H],edge[H*H];
+void dfs(int x){
+	int temp;
+	while(p[x]<(int)a[x].size()){
+		temp=a[x][p[x]];
+		if(edge[b[x][temp]]==1){
+			p[x]++;
+			continue;
+		}
+		edge[b[x][temp]]=1;
+		edge[b[temp][x]]=1;
+		p[x]++;
+		dfs(temp);
+	}
+	stack.push_back(x);
+}
+		
+int main(){
+	scanf("%d%d",&n,&m);
+	int x,y;
+	for(int i=0;i<m;i++){
+		scanf("%d%d",&x,&y);
+		a[x].push_back(y);
+		a[y].push_back(x);
+		b[x][y]=i+1;
+		b[y][x]=i+1;
+	}
+	int first=1,num=0;
+	for(int i=1;i<=n;i++){
+		if(a[i].size()%2==1){
+			first=i;
+			num++;
+		}
+		if(num>2){
+			cout<<"No Solution"<<endl;
+		}
+	}
+	dfs(first);
+	for(int i=0;i<stack.size();i++){
+		printf("%d ",stack[i]);
+	}
+	printf("\n");
+	return 0;
+}

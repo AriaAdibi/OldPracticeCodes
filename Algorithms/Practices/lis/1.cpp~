@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+const int H=1001000;
+int a[H],b[H],c[H],par[H],head=1,n;
+
+void print(int x){
+	if(par[x]==-1){
+		cout<<a[x]<<" ";
+		return;
+	}
+	print(par[x]);
+	cout<<a[x]<<" ";
+}
+int main(){
+	scanf("%d",&n);
+	for(int i=0;i<n;i++){
+		scanf("%d",&a[i]);
+	}
+	b[0]=a[0];
+	c[0]=0;
+	par[0]=-1;
+	int x;
+	for(int i=1;i<n;i++){
+		x=upper_bound(b,b+head,a[i])-b;
+		b[x]=a[i];
+		c[x]=i;
+		par[i]=c[x-1];
+		if(x==head){
+			head++;
+		}
+		par[c[0]]=-1;
+	}
+	cout<<head<<endl;
+	print(c[head-1]);
+	cout<<endl;
+	return 0;
+}

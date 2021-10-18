@@ -1,0 +1,68 @@
+// YA HAGH
+#include<iostream>
+#include<set>
+using namespace std;
+struct man{
+	int p,q,ind;
+	bool operator <(const man &temp)const{
+		if(q==temp.q){
+			if(p==temp.p){
+				return ind<temp.ind;
+			}
+			return p<temp.p;
+		}
+		return q<temp.q;
+	}
+};
+struct me{
+	int x,ind;
+	bool operator <(const me &temp)const{
+		return x<temp.x;
+	}
+};
+const int H=400*1000+10;
+typedef set<man> :: iterator it;
+int n,m,pa,pb,match[H][2],counter;
+me a[H];
+man b[H];
+set<man> s;
+bool cmp(man x,man y){
+	return x.p<y.p;
+}
+
+int main(){
+	scanf("%d%d",&n,&m);
+	for(int i=0;i<n;i++){
+		scanf("%d",&a[i].x);
+		a[i].ind=i+1;
+	}
+	for(int i=0;i<m;i++){
+		scanf("%d%d",&b[i].p,&b[i].q);
+		b[i].ind=i+1;
+	}
+	sort(a,a+n);
+	sort(b,b+m,cmp);
+	it p;
+	while(pa<n){
+		while(b[pb].p<=a[pa].x && pb<m){
+			s.insert(b[pb]);
+			pb++;
+		}
+		p=s.begin();
+		while((*p).q<a[pa].x && p!=s.end()){
+			s.erase(p);
+			p=s.begin();
+		}
+		if(p!=s.end()){
+			match[counter][0]=a[pa].ind;
+			match[counter++][1]=(*p).ind;
+			s.erase(p);
+		}
+		pa++;
+	}
+	printf("%d\n",counter);
+	for(int i=0;i<counter;i++){
+		printf("%d %d\n",match[i][0],match[i][1]);
+	}
+	return 0;	
+}

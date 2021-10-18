@@ -1,0 +1,64 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+const int H=1100;
+vector<int> a[H];
+int mark[H],n,m,out[H],len[H],check,root;
+
+
+int dfs(int x){
+	mark[x]=1;
+	int temp,y,ret=10000000;
+	for(int i=0;i<(int)a[x].size();i++){
+		temp=a[x][i];
+		if(mark[temp]==0){
+			len[temp]=len[x]+1;
+			if(x==root){
+				check++;
+				if(check==2){
+					out[root]=1;
+				}
+			}
+			y=dfs(temp);
+			if(y==len[x] && x!=root){	
+				out[x]=1;
+			}
+			ret=min(ret,y);
+		}else{
+			ret=min(ret,len[temp]);
+		}
+	}
+	return ret;
+}
+					
+
+int main(){
+	scanf("%d%d",&n,&m);
+	int x,y;
+	for(int i=0;i<m;i++){
+		scanf("%d%d",&x,&y);
+		a[x].push_back(y);
+		a[y].push_back(x);
+	}
+	for(int i=0;i<n;i++){
+		if(mark[i]==0){	
+			root=i;
+			check=0;
+			dfs(i);
+		}
+	}
+	int counter=0;
+	for(int i=1;i<=n;i++){
+		if(out[i]==1){
+			counter++;
+		}
+	}
+	cout<<counter<<endl;
+	for(int i=1;i<=n;i++){
+		if(out[i]==1){
+			cout<<i<<" ";
+		}
+	}
+	cout<<endl;
+	return 0;
+}

@@ -1,0 +1,59 @@
+<HTML>
+<!-- saved from url=(0051)http://acm.sgu.ru/problem.php?contest=0&problem=298 -->
+                               <html><head><title> SSU Online Contester :: 298. King Berl VI </title><META http-equiv='content-type' content='text/html; charset=windows-1251'><link rel=stylesheet type=text/css href=texstyle.css></head><body><div align=center><h4>298. King Berl VI</h4></div><div align=center>Time limit per test: 4
+ second(s)<br />Memory limit: 65536
+ kilobytes</div><div align=center>input: standard<br />output: standard</div ><br /><br />King Berl VI has <img border=0 align=absmiddle src=temp/cache/f9c4988898e7f532b9f826a75014ed3c.gif> daughters and no sons. During his long life he gave a number of promises to his daughters. All the promises have the following wording: "daughter <img border=0 align=absmiddle src=temp/cache/1338d1e5163ba5bc872f1411dd30b36a.gif>, I promise to give you dowry not less than <img border=0 align=absmiddle src=temp/cache/db0e77b2ab4f495dea1f5c5c08588288.gif> burles more than to daughter <img border=0 align=absmiddle src=temp/cache/c503cd3cc90b9dc8646daa73c42365ae.gif> ", where <img border=0 align=absmiddle src=temp/cache/77a3b857d53fb44e33b53e4c8b68351a.gif> represents the number of the promise. Before his death the king decided to give some amount of money to each daughter. As far as he was the fair king, he decided to fullfill all his promises. But he was not only fair but also very greedy, he decided that he can give negative amount of burles as a dowry (i.e. daughter should pay this amount of burles to the treasury). Because of his born greed and by advice of the minister of finances, he made a decision that absolute value of each dowry should not exceed <img border=0 align=absmiddle src=temp/cache/fa35043f335bc43f27e21bc02c268be9.gif> burles and the difference between dowry of the oldest and of the youngest daughters should be as small as possible (note, this value can be negative). <br /><br />I.e. if the dowry given to the <img border=0 align=absmiddle src=temp/cache/77a3b857d53fb44e33b53e4c8b68351a.gif> -th daughter is <img border=0 align=absmiddle src=temp/cache/4ebf880807deff5796460f39aea46f80.gif>, folllowing conditions should be satisfied:<ul> <li><img border=0 align=absmiddle src=temp/cache/15f5710facb5008627a3ca3b43d32223.gif> <li><img border=0 align=absmiddle src=temp/cache/63578b14c7256c95ad612631f193c781.gif> should be minimal </ul><br /><br /><div align = left><b>Input</b></div>The fist line of the input file contains two integers numbers <img border=0 align=absmiddle src=temp/cache/f9c4988898e7f532b9f826a75014ed3c.gif> and <img border=0 align=absmiddle src=temp/cache/fb97d38bcc19230b0acd442e17db879c.gif> (<img border=0 align=absmiddle src=temp/cache/cbc386876608b29846da9a356be08e66.gif>), where <img border=0 align=absmiddle src=temp/cache/f9c4988898e7f532b9f826a75014ed3c.gif> is the number of daughters and <img border=0 align=absmiddle src=temp/cache/fb97d38bcc19230b0acd442e17db879c.gif> is the number of promises. The following <img border=0 align=absmiddle src=temp/cache/fb97d38bcc19230b0acd442e17db879c.gif> lines contain the description of promises in the following form: <img border=0 align=absmiddle src=temp/cache/027f70a9571031c048095c864e20abf8.gif> (<img border=0 align=absmiddle src=temp/cache/7c0e89cc538c08ad73336060c048dbd9.gif>). The youngest daughter has the number one, the oldest&nbsp;&mdash;&nbsp; <img border=0 align=absmiddle src=temp/cache/f9c4988898e7f532b9f826a75014ed3c.gif>. Each pair <img border=0 align=absmiddle src=temp/cache/a5e820ff9567ea3f9fba5f1a7bc26423.gif> can appear in the input several times.<br /><br /><div align = left><b>Output</b></div>Write to the output number <img border=0 align=absmiddle src=temp/cache/e11a8cfcf953c683196d7a48677b2277.gif> if there is no solution for the problem (i.e. there is no sequence of <img border=0 align=absmiddle src=temp/cache/f9c4988898e7f532b9f826a75014ed3c.gif> integers which satisfies all described above requirements). Write to the output <img border=0 align=absmiddle src=temp/cache/f9c4988898e7f532b9f826a75014ed3c.gif> integer numbers &mdash;&nbsp;the amount of dowry of each daughter in burles, if solution exists. If there are several solutions output any of them.<br /><br /><div align = left><b>Example(s)</b></div>
+<table cellspacing=0 cellpadding=4
+ style='border-collapse:collapse; border: 1px black solid;'>
+ <tr >
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>sample input</pre>
+ </td>
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>sample output</pre>
+ </td>
+ </tr>
+ <tr >
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>
+4 5
+2 1 1
+3 1 2
+3 2 3
+4 2 1
+4 3 2
+</pre>
+ </td>
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>
+-3 -2 1 3
+</pre>
+ </td>
+ </tr>
+</table><br>
+<table cellspacing=0 cellpadding=4
+ style='border-collapse:collapse; border: 1px black solid;'>
+ <tr >
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>sample input</pre>
+ </td>
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>sample output</pre>
+ </td>
+ </tr>
+ <tr >
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>
+2 2
+1 2 0
+2 1 0
+</pre>
+ </td>
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>
+-7 -7
+</pre>
+ </td>
+ </tr>
+</table><br>
+ <br /><br /><hr><table width=100% cellpadding=0 cellspacing=0 border=0><tr style='background-color : #FFFFFF;'><td align=right><a target=_top href='mailto:acm@cs.sgu.ru'>Online Contester</a> Team &copy; 2002 - 2007. All rights reserved.</td></tr></table></body></html>

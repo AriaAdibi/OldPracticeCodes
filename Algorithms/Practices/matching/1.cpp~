@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+const int H=1000+10;
+int n,m,a[H][H],mark[H],matchb[H],matchp[H],deg[H];
+
+int dfs(int x){
+	mark[x]=1;
+	int temp;
+	for(int i=0;i<deg[x];i++){
+		temp=a[x][i];
+		if(matchp[temp]==0){
+			matchp[temp]=x;
+			matchb[x]=temp;
+			return 1;
+		}
+		if(mark[matchp[temp]]==1){
+			continue;
+		}
+		if(dfs(matchp[temp])==1){
+			matchb[temp]=x;
+			matchp[x]=temp;
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int main(){
+	cin>>n>>m;
+	int _x,_y;
+	for(int i=0;i<m;i++){
+		cin>>_x>>_y;
+		a[_x][deg[_x]++]=_y;
+	}
+	int counter=0;
+	for(int i=1;i<=n;i++){
+		if(dfs(i)==1){
+			counter++;
+		}
+					memset(mark,0,sizeof mark);
+
+	}
+	cout<<counter<<endl;
+	return 0;
+}

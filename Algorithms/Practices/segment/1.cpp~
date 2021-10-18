@@ -1,0 +1,95 @@
+// YA HAGH
+#include<iostream>
+using namespace std;
+const int H=1000000;
+struct man{
+	long long zarb,jam;
+	int rast,chap;
+	man(){
+		zarb=1;
+		jam=0;
+		rast=-1;
+		chap=-1;
+	}
+};
+man a[H];
+int z,counter=1,javab,n,m,k;
+char ch;
+void shift(int x){
+	int r=a[x].rast,l=a[x].chap;
+	a[r].jam*=a[x].zarb;
+	a[r].zarb*=a[x].zarb;
+	a[r].jam+=a[x].jam;
+	a[r].jam%=k;a[r].zarb%=k;
+	a[l].jam*=a[x].zarb;
+	a[l].zarb*=a[x].zarb;
+	a[l].jam+=a[x].jam;
+	a[l].jam%=k;a[l].zarb%=k;
+	a[x].jam=0;a[x].zarb=1;	
+}
+void find(int first,int last,int x,int p,int q){//darim too bazeye firsto last donbale p,q migardim
+	if(first==p && q==last){
+		if(ch=='+'){
+			a[x].jam+=z;
+			a[x].jam%=k;
+		}else{
+			a[x].zarb*=z;
+			a[x].jam*=z;
+			a[x].zarb%=k;
+			a[x].jam%=k;
+		}
+		return;
+	}
+	if(a[x].rast==-1){
+		a[x].rast=counter++;
+		a[x].chap=counter++;
+	}
+	int mid=(first+last)/2;
+	shift(x);
+	if(p>=mid){
+		find(mid,last,a[x].rast,p,q);
+	}else if(q<=mid){
+		find(first,mid,a[x].chap,p,q);
+	}else{
+		find(first,mid,a[x].chap,p,mid);
+		find(mid,last,a[x].rast,mid,q);
+	}
+}
+void out(int first,int last,int x,int p){
+	if(last-first==1){
+		javab*=a[x].zarb;
+		javab+=a[x].jam;
+		return;
+	}		
+	int mid=(first+last)/2;
+	if(a[x].rast==-1){	
+		a[x].rast=counter++;
+		a[x].chap=counter++;
+	}
+	if(p>=mid){
+		out(mid,last,a[x].rast,p);
+	}else{
+		out(first,mid,a[x].chap,p);
+	}
+	javab*=a[x].zarb;
+	javab+=a[x].jam;
+	javab%=k;
+}
+
+int main(){
+	scanf("%d%d%d",&n,&m,&k);
+	for(int i=0;i<m;i++){		
+		scanf(" %c",&ch);
+		int x,y;
+		if(ch=='?'){
+			scanf("%d",&x);
+			javab=0;
+			out(0,n+1,0,x);
+			cout<<javab%k<<endl;
+		}else{
+			scanf("%d%d%d",&x,&y,&z);
+			find(0,n+1,0,x,y+1);
+		}
+	}
+}	
+		

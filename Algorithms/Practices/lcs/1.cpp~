@@ -1,0 +1,65 @@
+// YA HAGH
+#include<iostream>
+using namespace std;
+const int H=3300;
+int par[H][H],d[2][H];
+ 	string s,t;
+void print(int x,int y){
+	if(x==-1 || y==-1){
+		return;
+	}
+	if(par[x][y]==1){
+		print(x-1,y-1);
+		cout<<s[x];
+		return;
+	}else if(par[x][y]==2){
+		print(x-1,y);
+	}else if(par[x][y]==3){
+		print(x,y-1);
+	}
+}
+int main(){
+	cin>>s>>t;
+	memset(par,-1,sizeof par);
+	int g=0,h=1;
+	for(int j=0;j<(int)t.length();j++){
+		if(s[0]==t[j]){
+			d[0][j]=1;
+			par[0][j]=1;
+		}
+	}
+	for(int i=1;i<(int)s.length();i++){
+		g++;
+		h++;
+		if(g==2){
+			g=0;
+		}else{
+			h=0;
+		}
+		if(s[i]==t[0]){
+			d[g][0]=1;
+		}else{
+			d[g][0]=d[h][0];
+			par[i][0]=2;
+		}
+		for(int j=1;j<(int)t.length();j++){
+			if(s[i]==t[j]){
+				d[g][j]=d[h][j-1]+1;
+				par[i][j]=1;
+				continue;
+			}
+			if(d[h][j]>d[g][j-1]){
+				d[g][j]=d[h][j];
+				par[i][j]=2;
+			}else{
+				d[g][j]=d[g][j-1];
+				par[i][j]=3;
+			}
+		}
+	}
+	cout<<d[g][t.length()-1]<<endl;
+	print(s.length()-1,t.length()-1);
+	cout<<endl;
+	return 0;
+}
+		

@@ -1,0 +1,64 @@
+#include <iostream>
+
+#include <cstring>
+
+using namespace std;
+
+char str[1000100];
+
+int base[1000100];
+
+int main()
+{
+	int k,max=0;
+	cin>>str;
+	int n=strlen(str);
+	for (int number=0,x=0; number<n; number++)
+	{
+		if(str[number]>='0'&& str[number]<='9')
+		{
+			str[number]=str[number]-'0';
+			x=str[number];
+			base[number]=x;
+			if(max<x)
+			{
+				max=x;
+			}
+		}
+		else
+		{
+			str[number]=str[number]-'A'+10;
+			x=str[number];
+			base[number]=x;
+			if(max<x)
+			{
+				max=x;
+			}
+		}
+	}
+	k=max+1;
+	if(max==0)
+	{
+		cout<<2;
+		return 0;
+	}
+	int sum=0;
+	for(int number=0; number<n; number++)
+	{
+		sum+=base[number];
+	}
+	while(k<37)
+	{
+		if(sum%(k-1)==0)
+		{
+			cout<<k;
+			return 0;
+		}
+		k++;
+	}
+	if(k==37)
+	{
+		cout<<"No solution.";
+	}
+	
+}

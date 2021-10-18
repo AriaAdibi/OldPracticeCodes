@@ -1,0 +1,40 @@
+<HTML>
+<!-- saved from url=(0051)http://acm.sgu.ru/problem.php?contest=0&problem=303 -->
+                               <html><head><title> SSU Online Contester :: 303. Great Berland Wall </title><META http-equiv='content-type' content='text/html; charset=windows-1251'><link rel=stylesheet type=text/css href=texstyle.css></head><body><div align=center><h4>303. Great Berland Wall</h4></div><div align=center>Time limit per test: 4
+ second(s)<br />Memory limit: 65536
+ kilobytes</div><div align=center>input: standard<br />output: standard</div ><br /><br />Berland is in civil war. This time peaceful solution is hardly possible. Collapse to the East and West Berland is inevitable! Commander-in-chief of grey, general Kruglyakovski, has made a decision to hasten the process and to surround his headquarters with a wall (which later be called Great Berland Wall). The wall should be built in such a way that the enemy's headquarters would stay at the other side of the wall.<br /><br />Looking to the Berland map general Kruglyakovski noticed that the country consists of a number of provinces. Each province has the form of a simple (but possibly not convex) polygon. The country of Berland has no enclaves and does not contain any enclaves of other countries inside, i.e. it is possible to get from one point of Berland to another without leaving the country. The "passability" is known for each segment of the border of each province. "Passability" is the maximum speed the soldier can move with along the corresponding segment.<br /><br />General Kruglyakovski decided that the wall will pass only along the borders of the provinces and will have the form of a simple polygon. He sent the group of soldiers to build the wall during the night. And you got a task to find such a form and position of the wall that the time of building would be minimal. The time of building of the section of the wall is equal to the "passability" of the corresponding border segment. The time of building of the wall is equal to the sum of building of its segments.<br /><br /><div align = left><b>Input</b></div>The first line of the input file contains the number of segments of province borders &mdash;&nbsp;integer number <img border=0 align=absmiddle src=temp/cache/f9c4988898e7f532b9f826a75014ed3c.gif> (<img border=0 align=absmiddle src=temp/cache/e4306a814033c5993cfd18847ae654b4.gif>). The segments themselves follow further. Each segment is defined by five numbers <img border=0 align=absmiddle src=temp/cache/affdf9820ebe1fed014d2c4db6f24c6b.gif>, where (<img border=0 align=absmiddle src=temp/cache/1a1ff1ad6a6e62458fa41ef3c67dcc6c.gif>) and (<img border=0 align=absmiddle src=temp/cache/d48183deaea9cd7286972bd3f7d18fe4.gif>) are the coordinates of the segment end points and the integer number <img border=0 align=absmiddle src=temp/cache/6c4adbc36120d62b98deef2a20d5d303.gif> (<img border=0 align=absmiddle src=temp/cache/8ee30b5829af3ecb6a7bd153369f889c.gif>) is the "passability". Any pair of segments has not more than one common point and this point can only be their common end-point. Input data finishes with one more quadruple of numbers <img border=0 align=absmiddle src=temp/cache/c2bd388a1a78d2387f7853cf301908a4.gif>, where (<img border=0 align=absmiddle src=temp/cache/fa50d3e33f5945141b963576437cb97c.gif>), (<img border=0 align=absmiddle src=temp/cache/020030f7e400d4fa405f4b519cd0df78.gif>) are the coordinates of headquarters of the general Kruglyakovski and his opponent correspondingly. Both headquarters are situated strictly inside one of the provinces. The headquarters are situated in different provinces. All coordinates in the input are integer numbers less than <img border=0 align=absmiddle src=temp/cache/a0e595dacbc463c3612fcf9c40cac343.gif> by the absolute value.<br /><br /><div align = left><b>Output</b></div>Write to the first line of the output the total time of building of the wall. Write to the second line the number of border segments the wall will occupy. To the next line write the sequence of the numbers of the segments. The segments are numbered in the order they appear in the input. If there are several solutions choose any of them.<br /><br /><div align = left><b>Example(s)</b></div>
+<table cellspacing=0 cellpadding=4
+ style='border-collapse:collapse; border: 1px black solid;'>
+ <tr >
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>sample input</pre>
+ </td>
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>sample output</pre>
+ </td>
+ </tr>
+ <tr >
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>
+13
+0 6 3 6 9 0 0 4 2 8
+4 4 6 6 7 2 4 3 6 1
+3 6 6 6 1 6 4 6 6 1
+4 2 6 4 1 0 0 0 6 6
+2 2 2 4 1 2 2 4 2 1
+0 6 2 4 5 2 4 4 4 4
+4 2 4 4 3
+3 3
+2 5
+</pre>
+ </td>
+ <td width=400 valign=top style='border-collapse:collapse; border: 1px black solid;'>
+ <pre>
+6
+6
+9 10 4 7 5 6
+</pre>
+ </td>
+ </tr>
+</table><br>
+<br /><br /> <hr><table width=100% cellpadding=0 cellspacing=0 border=0><tr style='background-color : #FFFFFF;'><td align=right><a target=_top href='mailto:acm@cs.sgu.ru'>Online Contester</a> Team &copy; 2002 - 2007. All rights reserved.</td></tr></table></body></html>
